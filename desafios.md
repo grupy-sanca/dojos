@@ -16,3 +16,4 @@ Lista de desafios para os dojos do grupy sanca
 13. [Task 3 e 4 do Codility (screenshot de prova técnica de processo seletivo)](https://github.com/grupy-sanca/dojos/tree/master/003)
 14. Navegação em vetor malucão (Task 1 do Codility)
 15. Vetor está quase ordenado? (Task 2 do Codility)
+16. Dada duas strings A e B, verificar qtde de trocas necessárias para que A seja igual a B. Por exemplo, "banana" e "bacana" precisariam de apenas 1 troca ("n" por "c"). Já "manga" e "mané" precisariam de 2 trocas ("g" por "n" e adicionar um "é").
