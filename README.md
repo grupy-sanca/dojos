@@ -24,3 +24,7 @@ Dojos realizados pelos membros do GruPy-Sanca
 ### [011 - 13/12/2016](https://github.com/grupy-sanca/dojos/tree/master/011)
 
 ### [012 - 16/02/2017](https://github.com/grupy-sanca/dojos/tree/master/012)
+
+### [013 - 26/03/2017](https://github.com/grupy-sanca/dojos/tree/master/013)
+
+### [016 - 16/02/2017](https://github.com/grupy-sanca/dojos/tree/master/016)
