@@ -5,6 +5,8 @@ Dojos realizados pelos membros do GruPy-Sanca
 
 ## Dojos realizados
 
+### [019 - 20/09/2018](https://github.com/grupy-sanca/dojos/tree/master/019)
+
 ### [018 - 23/08/2018](https://github.com/grupy-sanca/dojos/tree/master/018)
 
 ### [017 - 09/11/2017](https://github.com/grupy-sanca/dojos/tree/master/017)
