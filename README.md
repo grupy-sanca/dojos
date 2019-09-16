@@ -1,5 +1,5 @@
 # Grupy-Sanca Dojos
-Dojos realizados pelos membros do GruPy-Sanca
+Dojos realizados pelos membros do grupy-sanca
 
 ## [Desafios realizados nos dojos](https://github.com/grupy-sanca/dojos/blob/master/desafios.md)
 
