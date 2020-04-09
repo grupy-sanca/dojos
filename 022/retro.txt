@@ -1,0 +1,18 @@
+O que foi bom:
+Aconteceu na quarentena;
+Conhecer pessoas novas;
+Pessoas novas participando;
+Exercitar TDD e baby steps;
+Primeira live do canal do grupy-sanca;
+dojo-toolkit
+
+O que podemos melhorar:
+Começar no horário marcado;
+Usar a webcam;
+Fazer presencial
+
+O que aprendemos:
+Fazer live com o liveshare;
+Contato maior com o TDD;
+Comunicação em pair programming;
+dojo-toolkit
