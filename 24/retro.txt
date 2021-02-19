@@ -1,0 +1,16 @@
+O que foi bom:
+    Programar usando TDD
+    Pair programming
+    Criação de testes
+    Pessoas novas
+    Diferentes níveis de conhecimento de Python
+    Nível do problema foi ideal
+    
+
+O que podemos melhorar:
+    Melhorar o texto do meetup com informações do vscode (login), desabilitar extensões
+    Frequência dos dojos
+
+
+O que aprendemos:
+    Dinâmica do dojo
