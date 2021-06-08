@@ -25,16 +25,24 @@ class Real:
         return self.value == Real(other).value
 
     def __lt__(self, other):
-        return self.value < other.value
+        other_value = self._get_value(other)
+        return self.value < other_value
 
-    def __sub__(self, other): 
-        return Real(self.value - other.value)
+    def __sub__(self, other):
+        other_value = self._get_value(other)
+        return Real(self.value - other_value)
 
     def __add__(self, other):  # other: Dollar
-        if isinstance(other, Real):
-            return Real(self.value + other.value)
-        
-        return NotImplemented
+        other_value = self._get_value(other)
+        return Real(self.value + other_value)
+    
+    def __iadd__(self, other):
+        other_value = self._get_value(other)
+        self.value = value
+
+    def __radd__(self, other):
+        other_value = self._get_value(other)
+        return self + other
 
     def __mul__(self, scalar):
         if not isinstance(scalar, Number):
@@ -47,10 +55,19 @@ class Real:
 
     def __neg__(self):
         return Real(-self.value)
+
+    def __abs__(self):
+        return Real(abs(self.value))
     
     def __str__(self):
-        value = float(self.value)
-        return f"R$ {value:.2f}".replace('.', ',')
+        value = abs(float(self.value))
+        sign = "+" if self.value > 0 else "-"
+        return f"{sign} R${value:.2f}".replace('.', ',')
 
     def __repr__(self):
         return f"Real({self.value})"
+
+    def _get_value(self, other):
+        if isinstance(other, Real):
+            return other.value
+        return other

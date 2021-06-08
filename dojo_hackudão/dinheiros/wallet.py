@@ -20,16 +20,17 @@ Aplicação de Caretira:
         * balanço do mês / período
         * resumo atual / por categoria
 
-TODO:
-- Carteira
-    - Balanço do mês
-    - Resumo atual
-    - "Relatórios"
+TODO:       
 - Conta bancária
 - Transação
     - Usar enum
 
 DOING:
+- Carteira
+    > Adicionar novas transações
+    > Resumo atual
+    - Balanço do mês
+    - "Relatórios"
 
 DONE:
 - Transação
@@ -40,6 +41,7 @@ DONE:
 from dataclasses import dataclass
 from datetime import datetime
 from unittest import mock
+from typing import List
 
 import pytest
 
@@ -52,16 +54,10 @@ class Transaction:
     IN = "IN"
     OUT = "OUT"
 
-    value: float
+    value: Real
     timestamp: datetime = None
     category: str = DEFAULT_CATEGORY
     description: str = ""
-
-    def __post_init__(self):
-        if self.value == 0:
-            raise ValueError
-
-        self.timestamp = self.timestamp or datetime.now()
         
     @property
     def type(self):
@@ -69,40 +65,42 @@ class Transaction:
             return Transaction.IN
         return Transaction.OUT
 
+    def __post_init__(self):
+        if self.value == 0:
+            raise ValueError
 
-def test_transaction():
-    transaction = Transaction(
-        value=-10,
-        timestamp=datetime(2021, 5, 5, 10),
-        category="comida",
-        description="almoço delícia",
-    )
-
-    assert transaction.value == Real(-10)
-    assert transaction.timestamp == datetime(2021, 5, 5, 10)
-    assert transaction.category == "comida"
-    assert transaction.description == "almoço delícia"
-    assert transaction.type == Transaction.OUT
+        self.value = Real(self.value)
+        self.timestamp = self.timestamp or datetime.now()
 
 
-def test_transaction_default():
-    transaction = Transaction(
-        value=5.55,
-        timestamp=datetime(2021, 5, 5, 10),
-    )
+@dataclass
+class Wallet:
+    name: str
+    _transactions: List[Transaction] = None
 
-    assert transaction.category == Transaction.DEFAULT_CATEGORY
-    assert transaction.description == ""
-    assert transaction.type == Transaction.IN
+    @property
+    def balance(self):
+        return sum(transaction.value for transaction in self._transactions)
 
+    def __post_init__(self):
+        if self._transactions is None:
+            self._transactions = []
 
-@pytest.mark.freeze_time
-def test_transaction_timestamp_default():
-    transaction = Transaction(value=10.10)
-    
-    assert transaction.timestamp == datetime.now()
+    def add(self, value, category=Transaction.DEFAULT_CATEGORY, description="", timestamp=None):
+        transaction = Transaction(value=value, category=category, description=description, timestamp=timestamp)
+        self._add_transaction(transaction)
 
+    def withdraw(self, value, category=Transaction.DEFAULT_CATEGORY, description="", timestamp=None):
+        transaction = Transaction(value=-value, category=category, description=description, timestamp=timestamp)
+        self._add_transaction(transaction)
 
-def test_transaction_value_zero():
-    with pytest.raises(ValueError):
-        transaction = Transaction(value=0)
+    def _add_transaction(self, transaction):
+        self._transactions.append(transaction)
+
+    def summary(self):
+        return {
+            "name": self.name,
+            "transactions": self._transactions,
+            "balance": self.balance,
+            "timestamp": datetime.now(),
+        }
