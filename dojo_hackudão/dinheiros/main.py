@@ -10,14 +10,12 @@ from decimal import Decimal
 import sys
 
 from reports import generate_transaction_text_report
-from wallet import Wallet
-
-# TODO persistir com pickle
-wallet = Wallet("Dinheiros")
+from repository import get_wallet, save_wallet
 
 
-def main(argv):
+def main(argv, wallet=None):
     command, *args = argv
+    wallet = wallet or get_wallet()
 
     if command == "report":
         report = generate_transaction_text_report(wallet)
@@ -28,7 +26,7 @@ def main(argv):
             return
         value = Decimal(args[0])
         wallet.add(value)
-        return
+        save_wallet(wallet)
 
 
 if __name__ == "__main__":

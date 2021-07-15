@@ -75,7 +75,7 @@ class Transaction:
 
 @dataclass
 class Wallet:
-    name: str
+    name: str = "wallet"
     _transactions: List[Transaction] = None
 
     @property
