@@ -1,4 +1,6 @@
 """
+https://www.codewars.com/kata/546e2562b03326a88e000020
+
 In this kata, you are asked to square every digit of a number and concatenate them.
 
 For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
@@ -11,12 +13,12 @@ Note: The function accepts an integer and returns an integer
 >>> separa_digitos(9229)
 [9, 2, 2, 9]
 
-
->>> elevaquadrado([9, 1, 1, 9])
+>>> eleva_quadrado([9, 1, 1, 9])
 [81, 1, 1, 81]
 
 >>> concatena([9, 1, 1, 9])
 9119
+
 >>> concatena([9])
 9
 
@@ -25,16 +27,13 @@ Note: The function accepts an integer and returns an integer
 
 >>> main(1)
 1
-
-
 """
 
 def separa_digitos(numero):
     lista = list(str(numero))
     return [int(item) for item in lista]
 
-
-def elevaquadrado(numeros):
+def eleva_quadrado(numeros):
     return[item**2 for item in numeros]
 
 def concatena(numeros):
@@ -42,5 +41,5 @@ def concatena(numeros):
 
 def main(numero):
     digitos = separa_digitos(numero)
-    aoquadrado = elevaquadrado(digitos)
+    aoquadrado = eleva_quadrado(digitos)
     return concatena(aoquadrado)
