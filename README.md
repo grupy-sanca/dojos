@@ -5,6 +5,8 @@ Dojos realizados pelos membros do grupy-sanca
 
 ## Dojos realizados
 
+### [054 - 16/04/2024](https://github.com/grupy-sanca/dojos/tree/master/054)
+
 ### [053 - 15/03/2024](https://github.com/grupy-sanca/dojos/tree/master/053)
 
 ### [052 - 23/01/2024](https://github.com/grupy-sanca/dojos/tree/master/052)
