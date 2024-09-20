@@ -1,12 +1,72 @@
 """
-Interseção de Listas
+1 - O grupo de pesquisa ResPYre Melhor criou um aplicativo que coletou os dados de cada usuário e colocou em uma lista.
+Os dados são: nome (str), idade (int), fumante (bool).
+Entretanto, o aplicativo do grupo é bem rudimentar, e acabou agregando os dados dos usuários em listas totalmente desordenadas,
+de forma que a lista geral de usuários ficou assim:
 
-Implemente uma função que encontre a interseção entre duas listas.
-A interseção deve incluir apenas os elementos que aparecem em ambas as listas.
-O resultado deve ser uma lista com os elementos comuns, mantendo a ordem dos elementos da primeira lista.
-Se não houver elementos comuns, a função deve retornar uma lista vazia.
+usuarios = [
+    ['Alberto', 35, True],
+    [72, 'Benedita', False],
+    [54, True, 'Cecilia'],
+    [True, 18, 'Diogo'],
+    [False, 'Everton', 27],
+    ['Geraldo', True, 64],
+    ['Helena', 42, False]
+]
 
-Entrada: interseccao_listas([1, 2, 3, 4], [3, 4, 5, 6])
+Como podemos ver, é muito difícil extrair as as informações de quem é fumante, ou mesmo a idade de cada um.
+Vamos auxiliar o pessoal da ResPYre Melhor organizando essa lista deixando todas as entradas de usuarios na forma
+[nome, idade, fumante]:
 
-Saída: [3, 4]
+Exemplo:
+organizar_usuario([54, True, 'Cecilia'])
+['Cecilia', 54, True]
+
+organizar_usuario(['Alberto', 35, True])
+['Alberto', 35, True]
+
+Bonus: use a função acima para organizar todos os usuarios de uma vez só
+organizar_usuarios([['Alberto', 35, True],[72, 'Benedita', False],[54, True, 'Cecilia'],[True, 18, 'Diogo'],[False, 'Everton', 27],['Geraldo', True, 64],['Helena', 42, False]])
+[['Alberto', 35, True],['Benedita', 72, False],['Cecilia', 54, True],['Diogo', 18, True],['Everton', 27, False],['Geraldo', 64, True],['Helena', 42, False]]
+
+
+>>> organizar_usuario([54, True, 'Cecilia'])
+['Cecilia', 54, True]
+
+>>> organizar_usuario(['Alberto', 35, True])
+['Alberto', 35, True]
+
+>>> indice('Alberto')
+0
+
+>>> indice(True)
+2
+
+>>> indice(32)
+1
+
+>>> organizar_usuarios([['Alberto', 35, True],[72, 'Benedita', False],[54, True, 'Cecilia'],[True, 18, 'Diogo'],[False, 'Everton', 27],['Geraldo', True, 64],['Helena', 42, False]])
+[['Alberto', 35, True], ['Benedita', 72, False], ['Cecilia', 54, True], ['Diogo', 18, True], ['Everton', 27, False], ['Geraldo', 64, True], ['Helena', 42, False]]
 """
+
+
+def organizar_usuario(dados):
+    resposta = [None, None, None]
+
+    for dado in dados:
+        resposta[indice(dado)] = dado
+
+    return resposta
+
+
+def indice(dado):
+    if isinstance(dado, str):
+        return 0
+    elif isinstance(dado, bool):
+        return 2
+    elif isinstance(dado, int):
+        return 1
+
+
+def organizar_usuarios(lista_usuarios):
+    return [organizar_usuario(u) for u in lista_usuarios]
